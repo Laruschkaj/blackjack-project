@@ -1,0 +1,218 @@
+/* style.css */
+
+/* Root styling for the entire page */
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive, sans-serif; /* Retro game font */
+    background-color: #2e7d32; /* Darker green felt color */
+    color: #fff; /* White text for contrast */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* General application title */
+.App-title {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #ffd700; /* Gold color for title */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out; /* Simple fade-in animation */
+}
+
+/* Keyframe for fade-in title */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Blackjack Game Container */
+.BlackjackGame {
+    background-color: #1b5e20; /* Slightly darker green for game area */
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4); /* Deep shadow for depth */
+    padding: 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box; /* Include padding in width */
+    position: relative; /* For potential absolute positioning of elements */
+    animation: scaleIn 0.8s ease-out; /* Scale in animation */
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.BlackjackGame h2 {
+    font-size: 1.8em;
+    color: #fce70d; /* Yellow for section title */
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+
+/* Container for the cards */
+.BlackjackGame-cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Space between cards */
+    margin-bottom: 30px;
+    perspective: 1000px; /* For 3D transform effect on cards */
+}
+
+/* Individual Card Styling */
+.Card {
+    width: 140px; /* Standard card width */
+    height: 200px; /* Standard card height */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures image stays within rounded corners */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); /* Card shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+    transform-style: preserve-3d; /* For possible future 3D flips */
+    animation: cardDeal 0.7s ease-out forwards; /* Deal animation */
+}
+
+/* Animation for cards dealing */
+@keyframes cardDeal {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) rotateY(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0deg);
+    }
+}
+
+/* Offset animation delay for second card */
+.BlackjackGame-cards .Card:nth-child(2) {
+    animation-delay: 0.2s; /* Second card deals slightly later */
+}
+
+
+.Card-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain; /* Ensure card image fits */
+}
+
+/* Score Display */
+.BlackjackGame-score {
+    font-size: 2em;
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+
+/* Blackjack Message Styling */
+.BlackjackGame-message {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ffd700; /* Gold color for Blackjack */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    animation: flash 1s infinite alternate, popIn 0.5s ease-out; /* Flash and pop-in animations */
+}
+
+/* Keyframes for Blackjack message */
+@keyframes flash {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+@keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+/* Deal New Hand Button */
+.BlackjackGame-deal-button {
+    background-color: #ff4500; /* Orange-red button */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 1px;
+}
+
+.BlackjackGame-deal-button:hover {
+    background-color: #e03c00; /* Darker on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.BlackjackGame-deal-button:active {
+    background-color: #c03000; /* Even darker when clicked */
+    transform: translateY(0); /* Push down effect */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .App-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .BlackjackGame {
+        padding: 25px;
+        max-width: 95%;
+    }
+
+    .BlackjackGame h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .BlackjackGame-cards {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        gap: 15px;
+        align-items: center;
+    }
+
+    .Card {
+        width: 120px;
+        height: 170px;
+    }
+
+    .BlackjackGame-score {
+        font-size: 1.7em;
+        margin-bottom: 15px;
+    }
+
+    .BlackjackGame-message {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .BlackjackGame-deal-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Blackjack</title>
+    <!-- Link to your custom CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - 'Press Start 2P' for a retro game feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- The root div where your React application will be mounted -->
+    <div id="root"></div>
+
+    <!-- React and ReactDOM CDNs - Crucial for React functionality -->
+    <!-- Using specific versions (e.g., @17) for robust in-browser Babel compatibility -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Babel CDN - Enables JSX transformation in the browser -->
+    <script src="https://unpkg.com/babel-standalone"></script>
+
+    <!-- Your React component files - Order of loading matters! -->
+    <!-- Child components should be defined before their parent components -->
+    <script src="src/Card.js" type="text/babel"></script>       <!-- Card component (child) -->
+    <script src="src/BlackjackGame.js" type="text/babel"></script> <!-- BlackjackGame component (parent of Card) -->
+    <script src="src/App.js" type="text/babel"></script>       <!-- App component (top-level, renders BlackjackGame) -->
+</body>
+</html>
