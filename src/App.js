@@ -1,22 +1,20 @@
 // src/App.js
 
-/**
- * App Component: The main entry point for the React Blackjack application.
- * It primarily renders the BlackjackGame component.
- */
 function App() {
+    // Add a console.log here to see if App component is being called
+    console.log("App component is rendering!");
+
     return (
         <div className="App">
-            {/* Main title for the application */}
             <h1 className="App-title">Simple React Blackjack</h1>
-            {/* Render the BlackjackGame component, which handles the game logic and display */}
             <BlackjackGame />
         </div>
     );
 }
 
-// Render the App component into the root div in index.html
-// This is the starting point for rendering your entire React application
-document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(<App />, document.getElementById('root'));
-});
+// TEMPORARILY REMOVE THE document.addEventListener for testing
+// We want to see if a more direct ReactDOM.render call works now that CDNs are loading.
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// If the above works, we can re-add the DOMContentLoaded if needed for robustness
+// but for initial setup, sometimes it creates more confusion.
